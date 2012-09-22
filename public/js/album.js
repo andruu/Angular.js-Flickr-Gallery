@@ -80,6 +80,27 @@
       }
       return $location.path("pages/" + $scope.search_term + "/" + ($scope.page - 1));
     };
+    $scope.next_photo = function() {
+      var current_photo, next_photo;
+      current_photo = $('.thumbnail.active');
+      next_photo = current_photo.parent().next('li');
+      if (next_photo.length) {
+        return $scope.set_current_photo($scope.photos[$('.thumbnails li').index(next_photo)]);
+      } else {
+        return $scope.next_page();
+      }
+    };
+    $scope.prev_photo = function() {
+      var current_photo, prev_photo;
+      current_photo = $('.thumbnail.active');
+      prev_photo = current_photo.parent().prev('li');
+      console.log(prev_photo);
+      if (prev_photo.length) {
+        return $scope.set_current_photo($scope.photos[$('.thumbnails li').index(prev_photo)]);
+      } else {
+        return $scope.prev_page();
+      }
+    };
     $scope.$on('$viewContentLoaded', function() {
       return $('#listing').focus();
     });
