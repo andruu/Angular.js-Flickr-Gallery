@@ -1,0 +1,43 @@
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a href="/" class="brand">Angular Album</a>
+      <form class="form-search navbar-search pull-right">
+        <div class="input-append">
+          <input type="text" class="search-query span2" ng-model="q">
+          <button class="btn btn-primary" ng-click="search()">Search</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<div id="listing" tabindex="0" ui-keypress="{ left : 'prev_page()', right: 'next_page()' }">
+  <div class="container">
+    <div class="row">
+      <div class="span4">
+        <div class="well">
+          <p>
+            Showing photos {{start}}-{{end}} from <strong>{{search_term}}</strong>.
+            <br>
+            On page {{page}} of {{pages}}.
+          </p>
+          <a ng-disabled="page <= 1" class="btn" ng-click="prev_page()">Previous Page</a>
+          <a ng-disabled="page >= pages" class="btn" ng-click="next_page()">Next Page</a>
+        </div>
+        <ul class="thumbnails">
+          <li ng-repeat="photo in photos">
+            <a class="thumbnail" ng-class="{active: photo == current_photo}">
+              <img ng-src="{{photo.thumb_src}}" alt="{{photo.title}}" ng-click="set_current_photo(photo)">
+            </a>
+          </li>
+        </ul>
+      </div>      
+      <div class="span8">
+        <div class="page-header">
+          <h2>{{title}}</h2>
+        </div>
+        <img id="current-image" ng-src="{{current_photo.src}}" alt="{{current_photo.title}}" class="img-rounded">
+      </div>
+    </div>
+  </div>
+</div>
