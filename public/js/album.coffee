@@ -28,7 +28,6 @@ app.config ($routeProvider) ->
             $location.path("/pages/1/#{$route.current.params.search_term}") if $route.current.params.page > page_info.pages
 
             photos = _.map data.photos.photo, (photo) ->
-              console.log photo
               title: photo.title
               thumb_src: "http://farm#{photo.farm}.staticflickr.com/#{photo.server}/#{photo.id}_#{photo.secret}_s.jpg"
               src: "http://farm#{photo.farm}.staticflickr.com/#{photo.server}/#{photo.id}_#{photo.secret}.jpg"

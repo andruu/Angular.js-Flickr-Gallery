@@ -34,7 +34,6 @@
               $location.path("/pages/1/" + $route.current.params.search_term);
             }
             photos = _.map(data.photos.photo, function(photo) {
-              console.log(photo);
               return {
                 title: photo.title,
                 thumb_src: "http://farm" + photo.farm + ".staticflickr.com/" + photo.server + "/" + photo.id + "_" + photo.secret + "_s.jpg",
